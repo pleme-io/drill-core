@@ -1,0 +1,26 @@
+[package]
+name = "drill-core"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89.0"
+license = "MIT"
+description = "Shared event schema and drill primitives for pleme-io drill orchestrators (pitr-forge, failover-forge)"
+repository = "https://github.com/pleme-io/drill-core"
+
+[lib]
+name = "drill_core"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+
+[lints.clippy]
+pedantic = "warn"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
